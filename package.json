@@ -2,10 +2,10 @@
   "name": "backend-series",
   "version": "1.0.0",
   "description": "a backend at chai and code channel ",
-  "type":"module",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev":"nodemon src/index.js",
+    "dev": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,6 +13,8 @@
     "url": "javascript , backend, chai"
   },
   "author": "Devraj sahani",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
 }
- 
