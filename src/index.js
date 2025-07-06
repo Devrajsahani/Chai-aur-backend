@@ -1,15 +1,21 @@
 import mongoose from "mongoose"
-import{DB_NAME} from "./constants";
+import{DB_NAME} from "./const.js";
 
 import express from"express"
 const app = express()
-function connectDB(){
+
+
+// (
+//     function connectDB(){
     
-};
-// for this we will use eefe method in order to carry out the operation 
+// }
+// )()
+
+// for this we will use fe method in order to carry out the operation 
 ( async ()=> {
     try{
-       await monogoose.connect (`${process.env.MONGODB_URI}/${DB_NAME}`) // with this line of code we are connecting the mongoose to the database that is the mongodb
+    //    await monogoose.connect (`${process.env.MONGODB_URI}/${DB_NAME}`) // with this line of code we are connecting the mongoose to the database that is the mongodb
+       await mongoose.connect (`mongodb+srv://sahanidevraj:12345@cluster0.vrxft8k.mongodb.net/dev`) // with this line of code we are connecting the mongoose to the database that is the mongodb
        app.on("error",()=>{
         console.log ("ERR:",error);
         throw error
