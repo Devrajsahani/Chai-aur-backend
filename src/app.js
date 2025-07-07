@@ -9,7 +9,9 @@ app.use(corsP({
     credentials:true,
 }))
 app.use(express.json({limit:"16kb"}))
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true, limit: "16kb"}));
+app.use(express.static("Public"));
+app.use(cookieParser()); // till now this feature is not being used so much in the backend but in future we may use it.
 
 
 export { app }
