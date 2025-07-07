@@ -1,10 +1,46 @@
 import mongoose from "mongoose"
 import{DB_NAME} from "./const.js";
 
-import express from"express"
+import express from "express"
 const app = express()
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 // (
 //     function connectDB(){
     
@@ -32,3 +68,4 @@ const app = express()
 }) ()
 
 // if we try to analyse this code then we will know that we have used a lot of things like where to throw the error when that method is not found, how to use try catch, await and listen 
+*/
