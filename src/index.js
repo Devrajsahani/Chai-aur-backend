@@ -1,82 +1,27 @@
-import mongoose from "mongoose"
-import{DB_NAME} from "./const.js";
-import connectDB from "./db/index.js";
+// index.js
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import app from "./app.js"; // ✅ Make sure you export app from app.js
+import { DB_NAME } from "./const.js";
+
 dotenv.config({
-    path:'./env'
-})
+  path: "./.env"
+});
 
-connectDB()
-.then(()=>{
-    app.listen(process.env.PORT || 8000,()=>{
-        console.log(`Server is running at port: ${process.env.PORT}`)
-    }
-})
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017";
+const PORT = process.env.PORT || 5000;
 
-.catch((err)=>{
-    console.log("Mongodb connection failed !!! ",err)
-})
+(async () => {
+  try {
+    const dbConn = await mongoose.connect(`${MONGODB_URI}/${DB_NAME}`);
+    console.log("✅ MongoDB connected successfully");
 
+    app.listen(PORT, () => {
+      console.log(`🚀 Server is running at http://localhost:${PORT}`);
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// (
-//     function connectDB(){
-    
-// }
-// )()
-
-// for this we will use fe method in order to carry out the operation 
-( async ()=> {
-    try{
-    //    await monogoose.connect (`${process.env.MONGODB_URI}/${DB_NAME}`) // with this line of code we are connecting the mongoose to the database that is the mongodb
-       await mongoose.connect (`mongodb+srv://sahanidevraj:12345@cluster0.vrxft8k.mongodb.net/dev`) // with this line of code we are connecting the mongoose to the database that is the mongodb
-       app.on("error",()=>{
-        console.log ("ERR:",error);
-        throw error
-       })// this is used when the express is not working.
-
-       app.listen(process.env.PORT,()=>{
-        console.log(`App is listening on the port ${process.env.PORT}`);
-       })
-
-    } catch(error ){
-        console.error("ERROR:",error)
-        throw error
-    }
-}) ()
-
-// if we try to analyse this code then we will know that we have used a lot of things like where to throw the error when that method is not found, how to use try catch, await and listen 
+  } catch (error) {
+    console.error("❌ MongoDB connection failed:", error);
+    process.exit(1); // Exit app if DB fails
+  }
+})();

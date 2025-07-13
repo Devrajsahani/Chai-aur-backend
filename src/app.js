@@ -13,5 +13,11 @@ app.use(express.urlencoded({extended: true, limit: "16kb"}));
 app.use(express.static("Public"));
 app.use(cookieParser()); // till now this feature is not being used so much in the backend but in future we may use it.
 
+// routes 
+import userRouter from"./routes/user.routes.js" 
+
+
+// routes declaration 
+app.use("/users",userRouter)
 
 export { app }
