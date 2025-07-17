@@ -1,9 +1,10 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
-import {ApiError} from "../utils/Apierror.js"
-import { User} from "../models/user.models.js"
+import {Apierror} from "../utils/Apierror.js";
+import { User} from "../models/user.models.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
+import upload from "../middlewares/multer.middleware.js";
 
 
 const generateAccessAndRefereshTokens = async(userId) =>{

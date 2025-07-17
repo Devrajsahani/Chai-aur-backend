@@ -1,4 +1,4 @@
-class apiresponse{
+class ApiResponse{
     constuctor(statusCode, data, message = "Success"){
         this.statusCode = statusCode
         this.data=data
@@ -6,4 +6,5 @@ class apiresponse{
     }
 
 }
+export {ApiResponse}
 // there are different types of api errors which are known as server error and each of them have a different meaning
