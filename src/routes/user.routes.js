@@ -13,7 +13,7 @@ const router = Router()
 router.route("/login").post(loginUser)
 
 //secured routes
-
+router.route("/logout").post(verifyjwt, logoutUser)
 
 
 export default router

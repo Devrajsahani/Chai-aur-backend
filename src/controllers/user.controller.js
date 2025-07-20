@@ -7,7 +7,8 @@ import mongoose from "mongoose";
 import upload from "../middlewares/multer.middleware.js";
 
 
-const generateAccessAndRefereshTokens = async(userId) =>{
+const generateAccessAndRefereshTokens = async(userId) =>{ // here we have created the method which we will be using for accessignthe tokens
+
     try {
         const user = await User.findById(userId)
         const accessToken = user.generateAccessToken()
@@ -36,7 +37,7 @@ const registerUser = asyncHandler( async (req, res) => {
     // return res
 
 
-    const {fullName, email, username, password } = req.body
+    const {fullName, email, username, password } = req.body // here we extracted all data points 
     //console.log("email: ", email);
 
     if (
@@ -57,7 +58,7 @@ const registerUser = asyncHandler( async (req, res) => {
     const avatarLocalPath = req.files?.avatar[0]?.path;
     //const coverImageLocalPath = req.files?.coverImage[0]?.path;
 
-    let coverImageLocalPath;
+    let coverImageLocalPath;  // here we saw the error and fixed it, and also learned how the images are being stored using multer and then called.
     if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
         coverImageLocalPath = req.files.coverImage[0].path
     }
@@ -133,7 +134,7 @@ const loginUser = asyncHandler(async (req, res) =>{
     throw new ApiError(401, "Invalid user credentials")
     }
 
-   const {accessToken, refreshToken} = await generateAccessAndRefereshTokens(user._id)
+   const {accessToken, refreshToken} = await generateAccessAndRefereshTokens(user._id) // used await  because sometimes the taks can take sometime to carry out,
 
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
 
