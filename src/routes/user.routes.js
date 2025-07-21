@@ -4,6 +4,7 @@ import {
     logoutUser, 
     registerUser, 
 } from "../controllers/user.controller.js";
+import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 
 
@@ -13,7 +14,7 @@ const router = Router()
 router.route("/login").post(loginUser)
 
 //secured routes
-router.route("/logout").post(verifyjwt, logoutUser)
+router.route("/logout").post(verifyJWT, logoutUser)
 
 
 export default router
